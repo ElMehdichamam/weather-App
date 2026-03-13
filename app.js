@@ -1,7 +1,9 @@
 
 const Temp=document.getElementById("cityTemp");
 const Feel=document.getElementById("cityFeel");
+
 const Name=document.getElementById("city");
+
 const Humidity=document.getElementById("Humidity");
 const Cloud=document.getElementById("Cloud");
 const Pic=document.getElementById("Img");
@@ -30,15 +32,7 @@ async function fetchweather(cityName){
     Humidity.textContent=`Humidity : ${data.main.humidity}`;
 
     let weatherPic="";
-    if (data.main.temp <= 0) {
-     weatherPic = "snowflake.png";
-    } else if (data.main.temp > 0 && data.main.temp <= 15) {
-    weatherPic = "light-rain.png";
-    } else if (data.main.temp > 15 && data.main.temp <= 25) {
-    weatherPic = "cloudy.png";
-    } else {
-    weatherPic = "sunny.png";
-    }
+    (data.main.temp <= 0)? weatherPic="snowflake.png":(data.main.temp > 0 && data.main.temp <= 15)? weatherPic = "light-rain.png":(data.main.temp > 15 && data.main.temp <= 25)? weatherPic = "cloudy.png": weatherPic = "sunny.png"
     Pic.src=`Images/${weatherPic}`
 }
     
